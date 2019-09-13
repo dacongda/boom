@@ -75,7 +75,7 @@ void boom::reg()
 			{
 				for (int j = 0; j < 11; j++)
 				{
-					outer[i][j] = 'A';
+					outer[i][j] = '#';
 				}
 			}
 			ticker[i][j] = 0;
@@ -109,7 +109,6 @@ void boom::finder(const int x, const int y)//发现
 		{
 			if(x+i==x&&y+j==y||x+i<1||y+j<1||x+i>10||y+j>10)//若超出数组范围或为自己则跳过
 			{
-				std::cout << "helloworld" << std::endl;
 				continue;
 			}
 			else
@@ -136,6 +135,7 @@ bool boom::chose(const int& x, const int& y, const char& mode)
 {if(x<1||x>10||y<1||y>10)
 {
 	std::cout << "x and y must betwen 1to 10" << std::endl;
+	return true;
 }
 else{
 	switch (mode)
@@ -150,7 +150,7 @@ else{
 			over();
 			return false;
 		}
-		else if (1 < save[y][x] && save[y][x] < 8)
+		else if (1 <= save[y][x] && save[y][x] <= 8)
 		{
 			clean(x, y);//该格有数字
 			return true;

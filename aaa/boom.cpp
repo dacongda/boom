@@ -93,6 +93,14 @@ void mainq(boom& a)
 		cin >> x >> y >> mode;
 		if (a.chose(x, y, mode) == false)
 		{
+			cout << "wanna play again?" << endl;
+			char c;
+			cin >> c;
+			if (c == 'Y')
+			{
+				a.reg();
+				mainq(a);
+			}
 		}
 		else
 		{

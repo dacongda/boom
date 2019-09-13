@@ -1,7 +1,7 @@
-﻿  boom.cpp
+﻿  preboom.cpp
   正在生成代码
-  2 of 38 functions ( 5.3%) were compiled, the rest were copied from previous compilation.
+  1 of 38 functions ( 2.6%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    10 functions had inline decision re-evaluated but remain unchanged
+    2 functions had inline decision re-evaluated but remain unchanged
   已完成代码的生成
   aaa.vcxproj -> C:\Users\dacon\source\repos\test\Release\aaa.exe
