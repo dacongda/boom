@@ -1,14 +1,14 @@
-﻿#include <iostream>
+#include <iostream>
 #include "boom.h"
 void mainp(boom& a);
 void mainq(boom& a);
-int main(int argc=1)
+int main(int argc,char *argv[])
 {
 	using namespace std;
 	cout << "|--------------------|\n" <<
 			"|                    |\n" <<
 		    "|                    |\n" <<
-		    "|       扫   雷      |\n" <<
+		    "|       ɨ   ��      |\n" <<
 		    "|                    |\n" <<
 		    "|                    |\n" <<
 		    "|--------------------|\n";

@@ -5,8 +5,7 @@
 void boom::nwg()
 {
 	using namespace std;
-	using namespace std;
-	srand(int(time(0)));
+	srand(time(0));
 	for (int i = 0; i < 10; i++)
 	{
 		int x = (rand() % 20 % 10) + 1;
@@ -181,26 +180,39 @@ return true;
 }
 void boom::view()//输出数组
 {
+	std::cout << "    ";
+	for (int i = 1; i < 11; i++)
+		std::cout << "[ " <<std::setw(2)<< i << "  ]";
+	std::cout << std::endl;
+	std::cout << std::endl;
 	for (int i = 1; i < 11; i++)
 	{
+		std::cout << "["<< std::setw(2) << i<<"]";
 		for(int j=1;j< 11;j++)
 		{
-			std::cout <<"[ "<<outer[i][j] << " ]";
+			std::cout <<"[ "<< std::setw(2) <<outer[i][j] << "  ]";
 		}
 		std::cout << std::endl << std::endl;
+		
 	}
 	std::cout << lastblock << std::endl;
 }
 void boom::viewbo()//输出数组
 {
+	std::cout << "    ";
+	for (int i = 1; i < 11; i++)
+		std::cout << "[ " << std::setw(2) << i << "  ]";
+	std::cout << std::endl;
+	std::cout << std::endl;
 	for (int i = 1; i < 11; i++)
 	{
+		std::cout << "[" << std::setw(2) << i << "]";
 		for (int j = 1; j < 11; j++)
 		{
-			
-			std::cout << "[" << std::setw(2) << save[i][j] << "]";
+			std::cout << "[ " << std::setw(2) << save[i][j] << "  ]";
 		}
 		std::cout << std::endl << std::endl;
+
 	}
 }
 bool boom::finish() {
@@ -216,7 +228,7 @@ bool boom::finish() {
 void boom::tic(const int& x, const int& y)//1为CL标记，2为错误标记，3为正确标记
 {
 	if(ticker[y][x]==0){
-		if (save[y][x] != 10)
+		if (save[y][x] < 10)
 		{
 			ticker[y][x] = 2;
 			wrontic += 1;
@@ -257,30 +269,41 @@ void boom::detic(const int& x, const int& y)
 	}
 }
 void boom::doubleclick(const int &x,const int &y){
-	
+	int tk=0;
 	for (int i = -1; i < 2; i++)
 	{
-		for (int j = 1; j < 2; j++)
+		for (int j = -1; j < 2; j++)
 		{
-			if (x + i == x && y + j == y || x + i < 1 || y + j < 1 || x + i>10 || y + j>10)//若超出数组范围或为自己则跳过
+			if (ticker[y + j][x + i] == 3 || ticker[y + j][x + i] == 2)
+				tk++;
+		}
+	}
+	if (save[y][x] == tk)
+	{
+		for (int i = -1; i < 2; i++)
+		{
+			for (int j = -1; j < 2; j++)
 			{
-				continue;
-			}
-			else
-			{
-				if (ticker[y + j][x + i] == 2)
-				{
-					chose(x, y, '3');
-					break;
-				}
-				else if (ticker[y + j][x + i] == 3)
+				if ((x + i == x && y + j == y) || x + i < 1 || y + j < 1 || x + i>10 || y + j>10)//若超出数组范围或为自己则跳过
 				{
 					continue;
 				}
-				else {
-					clean(x + i, y + j);
+				else
+				{
+					if (ticker[y + j][x + i] == 2)
+					{
+						chose(x, y, '3');
+						break;
+					}
+					else if (ticker[y + j][x + i] == 3)
+					{
+						continue;
+					}
+					else {
+						chose(x + i, y + j, '0');
+					}
+
 				}
-				
 			}
 		}
 	}
